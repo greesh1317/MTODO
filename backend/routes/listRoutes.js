@@ -4,12 +4,12 @@ const {
     getList,
     setList, 
     updateList, 
-     eleteList,
-     deleteList
+    deleteList
 } = require('../controllers/listController')
 
+const {protect} = require('../middleware/authMiddleware')
 
-router.route('/').get(getList).post(setList)
-router.route('/:id').delete(deleteList).put(updateList)
+router.route('/').get(protect, getList).post(protect, setList)
+router.route('/:id').delete(protect, deleteList).put(protect, updateList)
 
 module.exports=router
