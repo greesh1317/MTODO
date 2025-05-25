@@ -17,4 +17,4 @@ const listSchema = mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model('list', listSchema)
+module.exports = mongoose.model('lists', listSchema)

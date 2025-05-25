@@ -3,9 +3,9 @@ const asyncHandler = require('express-async-handler')
 const List = require('../models/listModel')
 const User = require('../models/userModel')
 
-const getList = asyncHandler(async (req, res) => {
-    const list = await List.find({user: req.user.id})
-    res.status(200).json(list)
+const getLists = asyncHandler(async (req, res) => {
+    const lists = await List.find({user: req.user.id})
+    res.status(200).json(lists)
 })
 
 const setList = asyncHandler(async (req, res) => {
@@ -14,29 +14,27 @@ const setList = asyncHandler(async (req, res) => {
      throw new Error('please add a test field')
    }
 
-   const list = await List.create({
+   const lists = await List.create({
     text: req.body.text,
     user: req.user.id,
    })
-    res.status(200).json(list)
+    res.status(200).json(lists)
 })
 
 const updateList = asyncHandler(async (req, res) => {
     const list = await List.findById(req.params.id)
 
-    if (!list){
+    if (!lists){
         res.status(400)
         throw new Error('List not found')
     }
 
-    const user = await User.findById(req.user.id)
-
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
-    if(global.user.toString() !== user.id){
+    if(lists.user.toString() !== req.user.id){
      res.status(401)
      throw new Error('User not authorized')   
     }
@@ -49,31 +47,29 @@ const updateList = asyncHandler(async (req, res) => {
 })
 
 const deleteList = asyncHandler(async (req, res) => {
-     const list = await List.findById(req.params.id)
+     const lists = await List.findById(req.params.id)
 
-    if (!list){
+    if (!lists){
         res.status(400)
         throw new Error('List not found')
     }
 
-    const user = await User.findById(req.user.id)
-
-    if(!user){
+    if(!req.user){
         res.status(401)
         throw new Error('User not found')
     }
 
-    if(global.user.toString() !== user.id){
+    if(lists.user.toString() !== req.user.id){
      res.status(401)
      throw new Error('User not authorized')   
     }
-    await list.deleteOne()
+    await lists.deleteOne()
 
     res.status(200).json({ id : req.params.id})
 })
 
 module.exports = {
-    getList,
+    getLists,
     setList,
     updateList,
     deleteList,
