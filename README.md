@@ -1,12 +1,10 @@
 
----
 
 #  MTODO – MERN To-Do List Application
 
 MTODO is a full-stack To-Do List (Task Manager) web application built using the **MERN Stack**.
 It allows users to manage daily tasks with secure authentication and a clean interface.
 
----
 
 ##  Features
 
@@ -18,7 +16,7 @@ It allows users to manage daily tasks with secure authentication and a clean int
 * Mark Tasks as Completed
 * Responsive UI
 
----
+
 
 ##  Tech Stack
 
@@ -27,7 +25,7 @@ It allows users to manage daily tasks with secure authentication and a clean int
 **Database:** MongoDB
 **Authentication:** JWT, Bcrypt
 
----
+
 
 ##  Folder Structure
 
@@ -40,7 +38,7 @@ MTODO/
 └── README.md
 ```
 
----
+
 
  ## Installation & Setup
 
@@ -51,7 +49,7 @@ git clone https://github.com/greesh1317/MTODO.git
 cd MTODO
 ```
 
----
+
 
 ## Install Dependencies
 
@@ -69,7 +67,7 @@ cd frontend
 npm install
 ```
 
----
+
 
 ## Environment Variables
 
@@ -81,7 +79,7 @@ JWT_SECRET=your_secret_key
 PORT=5000
 ```
 
----
+
 
 ## Run Application
 
@@ -99,7 +97,7 @@ cd frontend
 npm start
 ```
 
----
+
 
 
 Examples:
